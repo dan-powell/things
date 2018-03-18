@@ -34,7 +34,7 @@ class AbstractController extends Controller
         return $this->model::findOrFail($id);
     }
 
-    public function store(Request $request)
+    public function store($thing, Request $request)
     {
         $this->model->fill($request->all());
         $this->model->save();
@@ -51,6 +51,11 @@ class AbstractController extends Controller
     {
         $thing = $this->model::findOrFail($id);
         $thing->delete();
+    }
+
+    public function indexSub($thing, $id, $subthing)
+    {
+        return $this->model::findOrFail($id)->with([$subthing])->get();
     }
 
 }

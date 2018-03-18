@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () {
-
+Route::group(['middleware' => ['api'], 'prefix' => 'api/things'], function () {
 
     Route::group(['prefix' => 'v1'], function () {
 
@@ -43,6 +42,10 @@ Route::group(['middleware' => ['api'], 'prefix' => 'api'], function () {
             'DanPowell\Things\Http\Controllers\AbstractController@delete'
         );
 
+        Route::get(
+            '{thing}/{id}/{subthing}',
+            'DanPowell\Things\Http\Controllers\AbstractController@indexSub'
+        );
 
     });
 
