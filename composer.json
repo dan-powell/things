@@ -22,5 +22,14 @@
 		"psr-4": {
 			"DanPowell\\Things\\": "/src"
 		}
-	}
+	},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DanPowell\\Things\\ThingsServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
 }

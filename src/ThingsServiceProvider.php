@@ -11,11 +11,13 @@ class ThingsServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
 
+        //dd('fart');
+
         // // Merge configs
-        // $this->mergeConfigFrom(__DIR__ . '/../config/logic.php', 'jellies.logic');
+        $this->mergeConfigFrom(__DIR__ . '/../config/things.php', 'things');
 
         // // Tell Laravel where to load the views from
-        // $this->app->register('DanPowell\Jellies\Providers\ViewComposerServiceProvider');
+        //$this->app->register('DanPowell\Jellies\Providers\ViewComposerServiceProvider');
 
         // // Bind some simple services
         // $this->app->singleton('message', 'DanPowell\Jellies\Services\MessageService');
@@ -38,45 +40,46 @@ class ThingsServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
 
-        // $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
-        // $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'jellies');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'things');
 
-        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'jellies');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'things');
 
-        // // Publish Frontend Assets
-        // $this->publishes([
-        //     __DIR__ . '/../public' => public_path('vendor/jellies'),
-        // ], 'public');
+        // Publish Frontend Assets
+        $this->publishes([
+            __DIR__ . '/../public' => public_path('vendor/things'),
+        ], 'public');
 
-        // // Publish Views
-        // $this->publishes([
-        //     __DIR__ . '/../resources/views' => resource_path('views/vendor/jellies'),
-        // ], 'views');
+        // Publish Views
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/things'),
+        ], 'views');
 
-        // $this->publishes([
-        //     __DIR__ . '/../resources/lang' => resource_path('lang/vendor/jellies'),
-        // ], 'translations');
+        $this->publishes([
+            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/things'),
+        ], 'translations');
 
-        // // Publish Config
-        // $this->publishes([
-        //     __DIR__ . '/../config' => config_path('jellies'),
-        // ], 'configs');
+        // Publish Config
+        $this->publishes([
+            __DIR__ . '/../config' => config_path('things'),
+        ], 'configs');
 
-        // // Publish Migrations
-        // $this->publishes([
-        //     __DIR__ . '/../database/migrations' => $this->app->databasePath().'/migrations',
-        // ], 'migrations');
+        // Publish Migrations
+        $this->publishes([
+            __DIR__ . '/../database/migrations' => $this->app->databasePath().'/migrations',
+        ], 'migrations');
 
-        // // Publish Factories
-        // $this->publishes([
-        //     __DIR__ . '/../database/factories' => $this->app->databasePath().'/factories',
-        // ], 'factories');
+        // Publish Factories
+        $this->publishes([
+            __DIR__ . '/../database/factories' => $this->app->databasePath().'/factories',
+        ], 'factories');
 
-        // // Publish Seeds
-        // $this->publishes([
-        //     __DIR__ . '/../database/seeds' => $this->app->databasePath().'/seeds',
-        // ], 'seeds');
+        // Publish Seeds
+        $this->publishes([
+            __DIR__ . '/../database/seeds' => $this->app->databasePath().'/seeds',
+        ], 'seeds');
 
         // // Publish Tests
         // $this->publishes([
